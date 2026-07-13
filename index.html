@@ -1,40 +1,142 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>A1T FF PRO HUB - FF Diamond Topup</title>
+<title>A1T STORE - Game Topup</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-body{font-family:Arial; background:#0f0f0f; color:white; text-align:center; padding:20px; margin:0}
-h1{color:#00ff88; font-size:28px; margin-bottom:5px}
-.btn{display:block; background:#25D366; color:white; padding:15px; margin:15px auto; border-radius:12px; text-decoration:none; font-size:18px; font-weight:bold; width:90%; max-width:400px}
-.price{background:#1a1a1a; padding:15px; border-radius:12px; margin:15px auto; width:90%; max-width:400px}
-.social a{display:block; background:#1a1a1a; color:#00ff88; text-decoration:none; font-size:17px; font-weight:bold; padding:14px; margin:10px auto; border-radius:10px; width:90%; max-width:400px}
-.social a:hover{background:#00ff88; color:#0f0f0f}
+body{font-family:Arial; background:#f0f2f5; margin:0; padding:0}
+.header{background:#1e3a8a; color:white; padding:15px; text-align:center; font-size:22px; font-weight:bold}
+.banner{background:linear-gradient(90deg,#2563eb,#1e3a8a); color:white; padding:25px 15px; text-align:center}
+.banner h1{margin:0; font-size:24px}
+.games{display:grid; grid-template-columns: repeat(3,1fr); gap:12px; padding:20px; max-width:600px; margin:auto}
+.game{background:white; border-radius:12px; padding:12px; text-align:center; box-shadow:0 2px 5px rgba(0,0,0,0.1); cursor:pointer}
+.game img{width:65px; height:65px; border-radius:15px}
+.game p{margin:8px 0 0 0; font-size:13px; font-weight:bold}
+.page{display:none; padding:20px; max-width:500px; margin:auto; background:white; border-radius:12px; margin-top:15px}
+input{width:95%; padding:12px; margin:8px 0; border:1px solid #ccc; border-radius:8px; font-size:15px}
+.diamond{border:1px solid #ddd; padding:12px; margin:8px 0; border-radius:10px; cursor:pointer; display:flex; justify-content:space-between}
+.diamond:hover{background:#f0f9ff}
+.btn{background:#2563eb; color:white; padding:15px; border:none; width:100%; border-radius:10px; font-size:16px; font-weight:bold; margin-top:10px; cursor:pointer}
+.back{color:#2563eb; text-decoration:none; font-weight:bold}
+.footer{background:#1e3a8a; color:white; padding:20px; text-align:center; margin-top:20px}
+.footer a{color:white; text-decoration:none; margin:0 8px}
 </style>
 </head>
 <body>
-<h1>A1T FF PRO HUB</h1>
-<p>Sabse Sasta FF Diamond | 24x7 Fast Topup</p>
 
-<a href="https://wa.me/918638125856" class="btn">📱 WhatsApp pe Order Karein</a>
+<div class="header">A1T STORE Official</div>
 
-<div class="price">
-<h2>💎 PRICE LIST</h2>
-<p>80 Diamonds - ₹20<br>210 Diamonds - ₹50<br>530 Diamonds - ₹120<br>1080 Diamonds - ₹240<br>2200 Diamonds - ₹480</p>
+<div id="home">
+<div class="banner">
+<h1>Top-Up Games Instantly!</h1>
+<p>Recharge FF Diamonds, MLBB, PUBG UC & more</p>
 </div>
 
-<h2>💳 PAYMENT</h2>
+<h2 style="text-align:center; margin-top:20px;">Popular Games</h2>
+<div class="games">
+  <div class="game" onclick="openGame('Free Fire','UID')">
+    <img src="https://play-lh.googleusercontent.com/VTULf9iRjF6zZz6E3XxZ8XxZ8XxZ8XxZ8" alt="FF">
+    <p>Free Fire</p>
+  </div>
+  <div class="game" onclick="openGame('Mobile Legends','ID + Server ID')">
+    <img src="https://play-lh.googleusercontent.com/MLBBicon" alt="MLBB">
+    <p>Mobile Legends</p>
+  </div>
+  <div class="game" onclick="openGame('PUBG Mobile','Character ID')">
+    <img src="https://play-lh.googleusercontent.com/PUBGicon" alt="PUBG">
+    <p>PUBG Mobile</p>
+  </div>
+  <div class="game" onclick="openGame('BGMI','Character ID')">
+    <img src="https://play-lh.googleusercontent.com/BGMIicon" alt="BGMI">
+    <p>BGMI</p>
+  </div>
+  <div class="game" onclick="openGame('Genshin Impact','UID')">
+    <img src="https://play-lh.googleusercontent.com/Genshinicon" alt="Genshin">
+    <p>Genshin Impact</p>
+  </div>
+  <div class="game" onclick="openGame('Clash of Clans','Player Tag')">
+    <img src="https://play-lh.googleusercontent.com/COCicon" alt="COC">
+    <p>Clash of Clans</p>
+  </div>
+</div>
+</div>
+
+<div id="orderPage" class="page">
+<a href="#" class="back" onclick="goHome()">← Back</a>
+<h2 id="gameName"></h2>
+
+<h3>1. Enter Details</h3>
+<input type="text" id="userID" placeholder="User ID">
+<input type="text" id="serverID" placeholder="Server ID">
+
+<h3>2. Select Items</h3>
+<div class="diamond" onclick="order('80 Diamonds - ₹20')">
+<span>80 Diamonds</span><b>₹20</b>
+</div>
+<div class="diamond" onclick="order('210 Diamonds - ₹50')">
+<span>210 Diamonds</span><b>₹50</b>
+</div>
+<div class="diamond" onclick="order('530 Diamonds - ₹120')">
+<span>530 Diamonds</span><b>₹120</b>
+</div>
+<div class="diamond" onclick="order('1080 Diamonds - ₹240')">
+<span>1080 Diamonds</span><b>₹240</b>
+</div>
+<div class="diamond" onclick="order('2200 Diamonds - ₹480')">
+<span>2200 Diamonds</span><b>₹480</b>
+</div>
+<div class="diamond" onclick="order('Weekly Membership - ₹160')">
+<span>Weekly Membership</span><b>₹160</b>
+</div>
+
+<div style="margin-top:20px; padding:15px; background:#f5f5f5; border-radius:10px">
+<h4>💳 PAYMENT</h4>
 <p><b>UPI ID:</b> 8638125856@fam</p>
-<p>Payment
-<p>Payment karke Screenshot WhatsApp pe bhejein</p>
-
-<div class="social">
-<h3>🌐 Follow Karo</h3>
-<a href="https://youtube.com/@mlkhabis?si=4Z0N8nHShHBfkvTV">▶️ YouTube Channel</a>
-<a href="https://www.instagram.com/oreo_q787?igsh=MWV3ZTl1ZzVsZWN2eA==">📸 Instagram</a>
-<a href="https://wa.me/918638125856">💬 WhatsApp</a>
+</div>
 </div>
 
-<p style="font-size:12px; margin-top:30px; color:gray;">© 2026 A1T FF PRO HUB</p>
+<div class="footer">
+<b>Follow Karo</b><br><br>
+<a href="https://youtube.com/@mlkhabis?si=4Z0N8nHShHBfkvTV">YouTube</a> | 
+<a href="https://www.instagram.com/oreo_q787?igsh=MWV3ZTl1ZzVsZWN2eA==">Instagram</a> | 
+<a href="https://wa.me/918638125856">WhatsApp</a>
+<p style="font-size:12px; margin-top:15px;">© 2026 A1T STORE</p>
+</div>
+
+<script>
+let currentGame = "";
+let idLabel = "";
+
+function openGame(game, label){
+  currentGame = game;
+  idLabel = label;
+  document.getElementById("home").style.display = "none";
+  document.getElementById("orderPage").style.display = "block";
+  document.getElementById("gameName").innerText = game;
+  document.getElementById("userID").placeholder = label;
+  document.getElementById("serverID").placeholder = "Server ID - agar hai to";
+}
+
+function goHome(){
+  document.getElementById("home").style.display = "block";
+  document.getElementById("orderPage").style.display = "none";
+}
+
+function order(item){
+  let uid = document.getElementById("userID").value;
+  let sid = document.getElementById("serverID").value;
+  if(uid == ""){ alert("Pehle User ID daalo bhai"); return; }
+  
+  let msg = `Hi bhai Order Karna Hai%0A%0A` +
+            `Game: ${currentGame}%0A` +
+            `${idLabel}: ${uid}%0A` +
+            `Server ID: ${sid}%0A` +
+            `Item: ${item}%0A%0A` +
+            `Payment UPI: 8638125856@fam se karunga`;
+            
+  window.open(`https://wa.me/918638125856?text=${msg}`);
+}
+</script>
+
 </body>
 </html>
