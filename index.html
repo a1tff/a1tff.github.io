@@ -1,194 +1,556 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>A1T STORE - Premium</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-<style>
-*{font-family:'Poppins', sans-serif; margin:0; padding:0; box-sizing:border-box}
-body{background:#0B1020; color:white; padding-bottom:80px}
-.container{max-width:1200px; margin:auto; padding:15px}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A1T STORE</title>
 
-.header{display:flex; justify-content:space-between; align-items:center; padding:15px; background:rgba(21,27,47,0.8); backdrop-filter:blur(10px); border-radius:15px; margin-bottom:15px}
-.header b{color:#3B82F6; font-size:22px}
-.social{display:flex; gap:12px}
-.social a{width:35px; height:35px; background:#151B2F; border-radius:50%; display:flex; align-items:center; justify-content:center; text-decoration:none; font-size:18px; transition:0.3s}
-.social a:hover{transform:scale(1.1)}
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
-.game-select{display:flex; gap:10px; margin-bottom:15px; overflow-x:auto}
-.game-btn{background:#151B2F; border:2px solid #222; border-radius:15px; padding:10px; display:flex; align-items:center; gap:10px; cursor:pointer; min-width:150px}
-.game-btn.active{border-color:#06B6D4; background:rgba(6,182,212,0.1)}
-.game-btn img{width:45px; height:45px; border-radius:12px}
-
-.content{display:flex; gap:15px; flex-wrap:wrap}
-.left{flex:2; min-width:320px}
-.right{flex:1; min-width:300px}
-
-.game-head{display:flex; align-items:center; gap:12px; margin-bottom:10px}
-.game-head img{width:55px; height:55px; border-radius:15px}
-.note{background:#151B2F; padding:10px; border-radius:10px; font-size:12px; color:#ffaa00; margin:10px 0}
-
-.items{display:grid; grid-template-columns:repeat(2,1fr); gap:12px}
-.item{background:rgba(21,27,47,0.6); backdrop-filter:blur(10px); border-radius:15px; padding:12px; display:flex; align-items:center; gap:12px; cursor:pointer; border:2px solid #222}
-.item.selected{border-color:#06B6D4; background:rgba(6,182,212,0.1)}
-.item img{width:45px; height:45px}
-.item b{font-size:14px}
-.price del{color:#777; font-size:11px}
-.price span{color:#06B6D4; font-weight:700}
-
-.order-box{background:#151B2F; padding:20px; border-radius:15px; position:sticky; top:15px}
-.order-box input{width:100%; padding:12px; background:#0B1020; border:1px solid #2a3450; border-radius:10px; color:white; margin-bottom:10px}
-.btn{width:100%; padding:14px; background:linear-gradient(90deg,#3B82F6,#06B6D4); border:none; border-radius:10px; color:white; font-weight:700; font-size:16px}
-
-.preview{background:#151B2F; padding:20px; border-radius:15px; margin-top:15px}
-.preview p{display:flex; justify-content:space-between; margin:8px 0}
-
-.footer{background:#151B2F; padding:20px; border-radius:15px; margin-top:20px; text-align:center}
-.footer h3{margin-bottom:10px; color:#06B6D4}
-.footer-links{display:flex; justify-content:center; gap:15px; margin-top:10px}
-.footer-links a{color:#3B82F6; text-decoration:none; padding:8px 15px; background:#0B1020; border-radius:8px}
-</style>
 </head>
+
 <body>
 
-<div class="container">
-<div class="header">
-<b>A1T STORE</b>
-<div class="social">
-<a href="https://wa.me/918638125856" style="background:#25D366">💬</a>
-<a href="https://youtube.com/@mlkhabis?si=NnxoB_XZEksaweHu" style="background:#FF0000">▶️</a>
-<a href="https://www.instagram.com/oreo_q787?igsh=MWV3ZTl1ZzVsZWN2eA==" style="background:#E4405F">📷</a>
-</div>
+<header>
+
+<div class="menu">
+<i class="fas fa-bars"></i>
 </div>
 
-<div class="game-select">
-<div class="game-btn active" onclick="loadGame('mlbb')"><img src="https://img.icons8.com/color/96/mobile-legends.png"><span>Mobile Legends</span></div>
-<div class="game-btn" onclick="loadGame('ff')"><img src="https://img.icons8.com/color/96/free-fire.png"><span>Free Fire MAX</span></div>
-<div class="game-btn" onclick="loadGame('bgmi')"><img src="https://img.icons8.com/color/96/crown.png"><span>BGMI</span></div>
+<div class="logo">
+A1T <span>STORE</span>
 </div>
 
-<div class="content">
-<div class="left">
-<div class="game-head">
-<img id="gameLogo" src="https://img.icons8.com/color/96/mobile-legends.png">
-<div><h1 id="gameName">Mobile Legends</h1><p style="color:#06B6D4; font-size:13px">Instant Delivery</p></div>
-</div>
-<p class="note">Note: PLEASE ENTER CORRECT USER ID AND SERVER ID</p>
-<div class="items" id="items"></div>
-</div>
+<div class="top-icons">
 
-<div class="right">
-<div class="order-box">
-<h3>Order Information</h3>
-<input type="text" id="uid" placeholder="Enter USER ID">
-<input type="text" id="server" placeholder="Enter SERVER ID">
-<button class="btn" onclick="sendWhatsApp()">Check & Order</button>
-</div>
-<div class="preview">
-<h3>Payment Preview</h3>
-<p>Game <span id="pGame">Mobile Legends</span></p>
-<p>Item <span id="pItem">Not Selected</span></p>
-<p>Price <span id="pPrice">₹0</span></p>
-</div>
-</div>
+<button id="themeBtn">
+<i class="fas fa-moon"></i>
+</button>
+
+<button class="wallet">
+₹0
+</button>
+
 </div>
 
-<div class="footer">
-<h3>Follow Us</h3>
-<p>Latest Updates & Giveaways</p>
-<div class="footer-links">
-<a href="https://wa.me/918638125856">WhatsApp</a>
-<a href="https://youtube.com/@mlkhabis?si=NnxoB_XZEksaweHu">YouTube</a>
-<a href="https://www.instagram.com/oreo_q787?igsh=MWV3ZTl1ZzVsZWN2eA==">Instagram</a>
+</header>
+
+<!-- Banner -->
+
+<section class="banner">
+
+<img src="images/banner.jpg">
+
+<div class="bannerText">
+
+<h1>Top-Up Games Instantly</h1>
+
+<p>Fast • Secure • Instant Delivery</p>
+
 </div>
-<p style="margin-top:15px; font-size:12px; color:#666">© 2026 A1T STORE. All Rights Reserved.</p>
+
+</section>
+
+<!-- Quick Buttons -->
+
+<section class="quick">
+
+<div class="box">
+
+<i class="fas fa-wallet"></i>
+
+<p>Add Money</p>
+
 </div>
+
+<div class="box" id="followBtn">
+
+<i class="fas fa-share-alt"></i>
+
+<p>Follow Us</p>
+
 </div>
 
-<script>
-let selectedItem = null;
-let selectedPrice = 0;
-let currentGameName = 'Mobile Legends';
-const WA_NUMBER = "918638125856";
+<div class="box">
 
-const games = {
-mlbb: {
-  logo: "https://img.icons8.com/color/96/mobile-legends.png",
-  name: "Mobile Legends",
-  items: [
-    {name:"5 Diamonds", price:"₹15", old:"₹20", img:"https://img.icons8.com/color/48/diamond.png"},
-    {name:"11 Diamonds", price:"₹30", old:"₹30", img:"https://img.icons8.com/color/48/diamond.png"},
-    {name:"42 Diamonds", price:"₹85", old:"₹85", img:"https://img.icons8.com/color/48/diamond.png"},
-    {name:"86 Diamonds", price:"₹170", old:"₹200", img:"https://img.icons8.com/color/48/diamond.png"},
-    {name:"172 Diamonds", price:"₹340", old:"₹400", img:"https://img.icons8.com/color/48/diamond.png"},
-    {name:"Weekly Pass", price:"₹149", old:"₹190", img:"https://img.icons8.com/color/48/diamond.png"},
-    {name:"Twilight Pass", price:"₹750", old:"₹850", img:"https://img.icons8.com/color/48/diamond.png"}
-  ]
-},
-ff: {
-  logo: "https://img.icons8.com/color/96/free-fire.png",
-  name: "Free Fire MAX",
-  items: [
-    {name:"80 Diamonds", price:"₹80", old:"₹90", img:"https://img.icons8.com/color/48/diamond.png"},
-    {name:"210 Diamonds", price:"₹200", old:"₹220", img:"https://img.icons8.com/color/48/diamond.png"},
-    {name:"530 Diamonds", price:"₹500", old:"₹550", img:"https://img.icons8.com/color/48/diamond.png"},
-    {name:"1080 Diamonds", price:"₹1000", old:"₹1100", img:"https://img.icons8.com/color/48/diamond.png"},
-    {name:"Weekly Membership", price:"₹160", old:"₹180", img:"https://img.icons8.com/color/48/diamond.png"},
-    {name:"Monthly Membership", price:"₹750", old:"₹800", img:"https://img.icons8.com/color/48/diamond.png"}
-  ]
-},
-bgmi: {
-  logo: "https://img.icons8.com/color/96/crown.png",
-  name: "BGMI",
-  items: [
-    {name:"60 UC", price:"₹80", old:"₹90", img:"https://img.icons8.com/color/48/diamond.png"},
-    {name:"325 UC", price:"₹400", old:"₹420", img:"https://img.icons8.com/color/48/diamond.png"},
-    {name:"660 UC", price:"₹800", old:"₹850", img:"https://img.icons8.com/color/48/diamond.png"},
-    {name:"1800 UC", price:"₹2000", old:"₹2100", img:"https://img.icons8.com/color/48/diamond.png"},
-    {name:"Prime Plus", price:"₹350", old:"₹370", img:"https://img.icons8.com/color/48/diamond.png"}
-  ]
-}
-};
+<i class="fas fa-receipt"></i>
 
-function loadGame(game){
-  document.querySelectorAll('.game-btn').forEach(b=>b.classList.remove('active'));
-  event.currentTarget.classList.add('active');
+<p>Orders</p>
 
-  document.getElementById('gameLogo').src = games[game].logo;
-  document.getElementById('gameName').innerText = games[game].name;
-  currentGameName = games[game].name;
-  document.getElementById('pGame').innerText = games[game].name;
+</div>
 
-  let html = '';
-  games[game].items.forEach((item, i)=>{
-    html += `<div class="item" onclick="selectItem(${i},'${game}')">
-      <img src="${item.img}">
-      <div><b>${item.name}</b><p style="font-size:11px; color:#aaa">Instant Delivery</p>
-      <div class="price"><del>${item.old}</del> <span>${item.price}</span></div></div>
-    </div>`;
-  });
-  document.getElementById('items').innerHTML = html;
-}
+<div class="box">
 
-function selectItem(i,game){
-  document.querySelectorAll('.item').forEach(el=>el.classList.remove('selected'));
-  document.querySelectorAll('.item')[i].classList.add('selected');
-  selectedItem = games[game].items[i].name;
-  selectedPrice = games[game].items[i].price;
-  document.getElementById('pItem').innerText = selectedItem;
-  document.getElementById('pPrice').innerText = selectedPrice;
-}
+<i class="fab fa-whatsapp"></i>
 
-function sendWhatsApp(){
-  let uid = document.getElementById('uid').value;
-  let server = document.getElementById('server').value;
-  if(!selectedItem){ alert("Pehle pack select karo"); return; }
-  if(uid==''){ alert("UID daalo"); return; }
-  let msg = `*NEW ORDER - A1T STORE*%0A%0A*Game:* ${currentGameName}%0A*Item:* ${selectedItem}%0A*Price:* ${selectedPrice}%0A*UID:* ${uid}%0A*Server:* ${server}%0A%0APayment screenshot bhejna`;
-  window.open(`https://wa.me/${WA_NUMBER}?text=${msg}`, '_blank');
-}
+<p>WhatsApp Order</p>
 
-loadGame('mlbb');
-</script>
+</div>
+
+</section>
+
+<!-- Popular Games -->
+
+<section class="games">
+
+<h2>Popular Games</h2>
+
+<div class="grid">
+
+<div class="card">
+<img src="images/mlbb.png">
+<h3>Mobile Legends</h3>
+</div>
+
+<div class="card">
+<img src="images/freefire.png">
+<h3>Free Fire</h3>
+</div>
+
+<div class="card">
+<img src="images/pubg.png">
+<h3>PUBG Mobile</h3>
+</div>
+
+<div class="card">
+<img src="images/hok.png">
+<h3>Honor Of Kings</h3>
+</div>
+
+<div class="card">
+<img src="images/genshin.png">
+<h3>Genshin Impact</h3>
+</div>
+
+<div class="card">
+<img src="images/wuwa.png">
+<h3>Wuthering Waves</h3>
+</div>
+
+</div>
+
+</section>
+
+<!-- Follow Popup -->
+
+<div class="popup" id="popup">
+
+<div class="popupBox">
+
+<h2>Follow Us</h2>
+
+<a href="https://www.instagram.com/oreo_q787?igsh=MWV3ZTl1ZzVsZWN2eA==">
+Instagram
+</a>
+
+<a href="https://youtube.com/@mlkhabis?si=NnxoB_XZEksaweHu">
+YouTube
+</a>
+
+<a href="https://wa.me/918638125856">
+WhatsApp
+</a>
+
+<button id="closePopup">
+Close
+</button>
+
+</div>
+
+</div>
+
+<!-- Bottom Navigation -->
+
+<nav>
+
+<a href="#">
+<i class="fas fa-home"></i>
+Home
+</a>
+
+<a href="#">
+<i class="fas fa-gamepad"></i>
+Games
+</a>
+
+<a href="#">
+<i class="fas fa-shopping-cart"></i>
+Orders
+</a>
+
+<a href="#">
+<i class="fas fa-cog"></i>
+Settings
+</a>
+
+</nav>
+
+<script src="script.js"></script>
+
 </body>
 </html>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#f4f7fc;
+color:#222;
+padding-bottom:80px;
+}
+
+header{
+height:70px;
+background:#ffffff;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:0 18px;
+box-shadow:0 2px 10px rgba(0,0,0,.08);
+position:sticky;
+top:0;
+z-index:1000;
+}
+
+.menu i{
+font-size:24px;
+cursor:pointer;
+}
+
+.logo{
+font-size:26px;
+font-weight:bold;
+color:#0d47ff;
+}
+
+.logo span{
+color:#ff9800;
+}
+
+.top-icons{
+display:flex;
+gap:10px;
+align-items:center;
+}
+
+.top-icons button{
+border:none;
+cursor:pointer;
+}
+
+#themeBtn{
+width:42px;
+height:42px;
+border-radius:50%;
+background:#f1f1f1;
+font-size:18px;
+}
+
+.wallet{
+background:#0d47ff;
+color:#fff;
+padding:10px 16px;
+border-radius:30px;
+font-weight:bold;
+}
+
+.banner{
+margin:15px;
+border-radius:20px;
+overflow:hidden;
+position:relative;
+box-shadow:0 10px 25px rgba(0,0,0,.15);
+}
+
+.banner img{
+width:100%;
+display:block;
+}
+
+.bannerText{
+position:absolute;
+left:20px;
+bottom:20px;
+color:#fff;
+}
+
+.bannerText h1{
+font-size:30px;
+font-weight:bold;
+}
+
+.bannerText p{
+margin-top:5px;
+font-size:15px;
+}
+
+.quick{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:15px;
+padding:15px;
+}
+
+.box{
+background:#fff;
+border-radius:20px;
+padding:18px 10px;
+text-align:center;
+box-shadow:0 8px 20px rgba(0,0,0,.08);
+transition:.3s;
+cursor:pointer;
+}
+
+.box:hover{
+transform:translateY(-6px);
+}
+
+.box i{
+font-size:30px;
+margin-bottom:10px;
+color:#0d47ff;
+}
+
+.box p{
+font-weight:600;
+font-size:14px;
+}
+
+.games{
+padding:15px;
+}
+
+.games h2{
+font-size:28px;
+margin-bottom:20px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:18px;
+}
+
+.card{
+background:#fff;
+border-radius:20px;
+overflow:hidden;
+box-shadow:0 10px 20px rgba(0,0,0,.08);
+transition:.3s;
+}
+
+.card:hover{
+transform:scale(1.04);
+}
+
+.card img{
+width:100%;
+height:150px;
+object-fit:cover;
+}
+
+.card h3{
+padding:12px;
+font-size:17px;
+text-align:center;
+}
+
+.popup{
+position:fixed;
+left:0;
+top:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.45);
+display:none;
+justify-content:center;
+align-items:end;
+z-index:9999;
+}
+
+.popupBox{
+background:#fff;
+width:100%;
+border-radius:25px 25px 0 0;
+padding:25px;
+animation:up .35s;
+}
+
+@keyframes up{
+from{
+transform:translateY(100%);
+}
+to{
+transform:translateY(0);
+}
+}
+
+.popupBox h2{
+margin-bottom:20px;
+}
+
+.popupBox a{
+display:block;
+margin-bottom:15px;
+padding:16px;
+text-decoration:none;
+color:#fff;
+font-weight:bold;
+border-radius:15px;
+}
+
+.popupBox a:nth-child(2){
+background:#E1306C;
+}
+
+.popupBox a:nth-child(3){
+background:#ff0000;
+}
+
+.popupBox a:nth-child(4){
+background:#25D366;
+}
+
+.popupBox button{
+width:100%;
+padding:15px;
+border:none;
+background:#111;
+color:#fff;
+border-radius:15px;
+font-size:16px;
+margin-top:15px;
+}
+
+nav{
+position:fixed;
+bottom:0;
+left:0;
+width:100%;
+background:#fff;
+display:flex;
+justify-content:space-around;
+padding:12px 0;
+box-shadow:0 -5px 15px rgba(0,0,0,.1);
+}
+
+nav a{
+text-decoration:none;
+color:#666;
+display:flex;
+flex-direction:column;
+align-items:center;
+font-size:13px;
+}
+
+nav i{
+font-size:22px;
+margin-bottom:5px;
+}
+
+nav a:hover{
+color:#0d47ff;
+}
+
+.dark{
+background:#121212;
+color:#fff;
+}
+
+.dark header,
+.dark nav,
+.dark .box,
+.dark .card,
+.dark .popupBox{
+background:#1f1f1f;
+color:#fff;
+}
+
+.dark .games h2{
+color:#fff;
+}
+// ===== A1T STORE =====
+
+// Follow Popup
+const followBtn = document.getElementById("followBtn");
+const popup = document.getElementById("popup");
+const closePopup = document.getElementById("closePopup");
+
+if (followBtn) {
+  followBtn.onclick = () => {
+    popup.style.display = "flex";
+  };
+}
+
+if (closePopup) {
+  closePopup.onclick = () => {
+    popup.style.display = "none";
+  };
+}
+
+window.onclick = function (e) {
+  if (e.target == popup) {
+    popup.style.display = "none";
+  }
+};
+
+// Dark Mode
+const themeBtn = document.getElementById("themeBtn");
+
+if (themeBtn) {
+  themeBtn.onclick = () => {
+    document.body.classList.toggle("dark");
+
+    if (document.body.classList.contains("dark")) {
+      themeBtn.innerHTML = '<i class="fas fa-sun"></i>';
+      localStorage.setItem("theme", "dark");
+    } else {
+      themeBtn.innerHTML = '<i class="fas fa-moon"></i>';
+      localStorage.setItem("theme", "light");
+    }
+  };
+}
+
+// Load Saved Theme
+if (localStorage.getItem("theme") === "dark") {
+  document.body.classList.add("dark");
+
+  if (themeBtn) {
+    themeBtn.innerHTML = '<i class="fas fa-sun"></i>';
+  }
+}
+
+// WhatsApp Number
+const whatsappNumber = "918638125856";
+
+// Example Function
+function sendOrder(game, item, price, userId, serverId) {
+
+  let message =
+`*NEW ORDER - A1T STORE*
+
+🎮 Game: ${game}
+
+💎 Item: ${item}
+
+💰 Price: ₹${price}
+
+👤 User ID: ${userId}
+
+🖥 Server ID: ${serverId}
+
+Please send me the payment QR Code.`;
+
+  let url =
+`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+
+  window.open(url, "_blank");
+}
+
+// Demo
+console.log("A1T STORE Loaded Successfully");
