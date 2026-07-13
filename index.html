@@ -1,116 +1,85 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>A1T STORE - Sabse Sasta Topup</title>
+<title>ZERO STORE A1T</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-body{font-family:Arial; background:#0f0f0f; color:white; margin:0; padding:0}
-.header{background:linear-gradient(90deg,#ff0040,#ff8c00); padding:15px; text-align:center; font-size:24px; font-weight:bold}
-.banner{text-align:center; padding:20px}
-.games{display:grid; grid-template-columns: repeat(3,1fr); gap:15px; padding:20px; max-width:700px; margin:auto}
-.game{background:#1a1a1a; border-radius:15px; padding:15px; text-align:center; cursor:pointer; border:2px solid #333}
-.game:hover{border-color:#ff0040}
-.game img{width:70px; height:70px; border-radius:20px}
-.compare-box{background:#1a1a1a; margin:20px; padding:20px; border-radius:15px}
-table{width:100%; border-collapse:collapse}
-th,td{padding:12px; text-align:center; border-bottom:1px solid #333}
-th{background:#ff0040}
-.buy-btn{background:#00ff88; color:black; padding:8px 15px; border:none; border-radius:5px; font-weight:bold; cursor:pointer}
-.diamond-pack{display:flex; align-items:center; gap:10px; padding:10px; background:#222; margin:8px 0; border-radius:10px}
-.diamond-pack img{width:40px; height:40px}
-.footer{background:#000; padding:20px; text-align:center}
-.btn{padding:12px 20px; margin:8px; border:none; border-radius:8px; color:white; font-weight:bold; cursor:pointer}
-.btn-yt{background:#FF0000}
-.btn-ig{background:#E4405F}
-.btn-wa{background:#25D366}
+body{font-family:Arial; background:#0a0a0a; color:white; margin:0; padding:0; padding-bottom:70px}
+.topbar{display:flex; justify-content:space-between; align-items:center; padding:12px 15px; background:#111}
+.topbar img{height:35px}
+.banner img{width:100%; border-radius:0}
+.menu{display:flex; justify-content:space-around; padding:15px 0; background:#111; margin:10px}
+.menu-item{text-align:center; font-size:12px}
+.menu-item div{width:50px; height:50px; background:#222; border-radius:50%; margin:auto; display:flex; align-items:center; justify-content:center; font-size:22px; margin-bottom:5px}
+h2{padding:0 15px; font-size:18px}
+.games{display:grid; grid-template-columns: repeat(3,1fr); gap:15px; padding:15px}
+.game{text-align:center; font-size:12px}
+.game img{width:100%; border-radius:12px; aspect-ratio:1/1}
+.bottom-nav{position:fixed; bottom:0; width:100%; background:#111; display:flex; justify-content:space-around; padding:10px 0; border-top:1px solid #333}
+.nav-item{text-align:center; font-size:10px; color:#aaa}
 </style>
 </head>
 <body>
 
-<div class="header">A1T STORE - Price Comparison</div>
+<div class="topbar">
+<img src="https://img.icons8.com/ios-filled/50/ffffff/menu.png" width="25">
+<b style="color:#00ff88; font-size:18px">A1T STORE</b>
+<img src="https://img.icons8.com/ios-filled/50/ffffff/user.png" width="25">
+</div>
 
 <div class="banner">
-<h1>💎 Sabse Sasta Game Topup Kaha Milega?</h1>
-<p>Rate Compare Karo Aur Save Karo</p>
+<img src="https://via.placeholder.com/600x200/ff0040/ffffff?text=A1T+STORE+OFFICIAL">
 </div>
 
+<div class="menu">
+<div class="menu-item"><div>+</div>Add Money</div>
+<div class="menu-item"><div>👥</div>Follow Us</div>
+<div class="menu-item"><div>🔔</div>Notification</div>
+<div class="menu-item"><div>🎁</div>Refer</div>
+</div>
+
+<h2>Popular Games</h2>
 <div class="games">
-  <div class="game" onclick="openCompare('Free Fire')">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Free_Fire_MAX_Logo.png/320px-Free_Fire_MAX_Logo.png">
-    <p>Free Fire</p>
-  </div>
-  <div class="game" onclick="openCompare('MLBB')">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Mobile_Legends_Bang_Bang_Logo.png/320px-Mobile_Legends_Bang_Bang_Logo.png">
-    <p>Mobile Legends</p>
-  </div>
-  <div class="game" onclick="openCompare('PUBG')">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/PUBG_Mobile_logo.svg/320px-PUBG_Mobile_logo.svg.png">
-    <p>PUBG Mobile</p>
-  </div>
+  <div class="game" onclick="openCompare('Free Fire')"><img src="https://img.icons8.com/color/96/free-fire.png"><p>Free Fire</p></div>
+  <div class="game" onclick="openCompare('MLBB')"><img src="https://img.icons8.com/color/96/mobile-legends.png"><p>MLBB</p></div>
+  <div class="game" onclick="openCompare('PUBG')"><img src="https://img.icons8.com/color/96/pubg.png"><p>PUBG Mobile</p></div>
+  <div class="game" onclick="openCompare('BGMI')"><img src="https://img.icons8.com/color/96/crown.png"><p>BGMI</p></div>
+  <div class="game" onclick="openCompare('Genshin')"><img src="https://img.icons8.com/color/96/wind.png"><p>Genshin</p></div>
+  <div class="game" onclick="openCompare('CODM')"><img src="https://img.icons8.com/color/96/gun.png"><p>COD Mobile</p></div>
 </div>
 
-<div id="comparePage" style="display:none">
-<div class="compare-box">
+<div id="comparePage" style="display:none; padding:20px">
 <h2 id="gameTitle"></h2>
-
-<h3>Diamond Packs</h3>
-<div class="diamond-pack">
-<img src="https://cdn-icons-png.flaticon.com/512/2583/2583344.png">
-<span>80 Diamonds</span>
-</div>
-<div class="diamond-pack">
-<img src="https://cdn-icons-png.flaticon.com/512/2583/2583344.png">
-<span>210 Diamonds</span>
-</div>
-<div class="diamond-pack">
-<img src="https://cdn-icons-png.flaticon.com/512/2583/2583344.png">
-<span>530 Diamonds</span>
-</div>
-
-<h3>💰 Price Comparison</h3>
-<table>
-<tr><th>Website</th><th>530 Diamond</th><th>Action</th></tr>
-<tr>
-<td>GameKharido</td><td>₹119</td>
-<td><button class="buy-btn" onclick="goAffiliate('gk')">Buy Now</button></td>
-</tr>
-<tr>
-<td>Codashop</td><td>₹125</td>
-<td><button class="buy-btn" onclick="goAffiliate('coda')">Buy Now</button></td>
-</tr>
-<tr>
-<td>UniPin</td><td>₹122</td>
-<td><button class="buy-btn" onclick="goAffiliate('unipin')">Buy Now</button></td>
-</tr>
+<table style="width:100%; color:white">
+<tr style="background:#ff0040"><th>Website</th><th>Price</th><th></th></tr>
+<tr><td>GameKharido</td><td>₹119</td><td><button onclick="goAffiliate('gk')" style="background:#00ff88; border:none; padding:8px; border-radius:5px">Buy</button></td></tr>
+<tr><td>Codashop</td><td>₹125</td><td><button onclick="goAffiliate('coda')" style="background:#00ff88; border:none; padding:8px; border-radius:5px">Buy</button></td></tr>
 </table>
-<p style="font-size:12px; color:#aaa">*Humara commission in links se aayega. Rate kam jyada ho sakta hai</p>
-<button style="background:#555; margin-top:15px" class="buy-btn" onclick="goHome()">← Back</button>
-</div>
+<button onclick="goHome()" style="margin-top:15px; background:#555; color:white; border:none; padding:10px; width:100%">← Back</button>
 </div>
 
-<div class="footer">
-<h3>Need Help?</h3>
-<button class="btn btn-wa" onclick="window.open('https://wa.me/918638125856')">💬 WhatsApp Support</button>
-<button class="btn btn-yt" onclick="window.open('https://youtube.com/@mlkhabis?si=4Z0N8nHShHBfkvTV')">▶️ YouTube</button>
-<button class="btn btn-ig" onclick="window.open('https://www.instagram.com/oreo_q787?igsh=MWV3ZTl1ZzVsZWN2eA==')">📷 Instagram</button>
-<p style="font-size:12px; margin-top:20px;">© 2026 A1T STORE</p>
+<div class="bottom-nav">
+<div class="nav-item">🏠<br>Home</div>
+<div class="nav-item">📦<br>Orders</div>
+<div class="nav-item">💬<br>Support</div>
+<div class="nav-item">⚙️<br>Settings</div>
 </div>
 
 <script>
 function openCompare(game){
+  document.querySelector('.games').style.display='none';
+  document.querySelector('h2').style.display='none';
   document.getElementById("comparePage").style.display = "block";
   document.getElementById("gameTitle").innerText = game + " Price Comparison";
-  window.scrollTo(0,300);
 }
 function goHome(){
+  document.querySelector('.games').style.display='grid';
+  document.querySelector('h2').style.display='block';
   document.getElementById("comparePage").style.display = "none";
 }
 function goAffiliate(site){
-  // Yaha apna affiliate link daalna hai
   if(site=='gk') window.open('https://www.gamekharido.com');
   if(site=='coda') window.open('https://www.codashop.com');
-  if(site=='unipin') window.open('https://www.unipin.com');
-  alert("Aapko affiliate site pe bhej diya gaya. Waha se purchase karein");
 }
 </script>
 
