@@ -4,553 +4,154 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>A1T STORE</title>
-
-<link rel="stylesheet" href="style.css">
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif;}
+body{background:#f4f7fc;color:#222;padding-bottom:80px;}
+header{height:70px;background:#ffffff;display:flex;align-items:center;justify-content:space-between;padding:0 18px;box-shadow:0 2px 10px rgba(0,0,0,.08);position:sticky;top:0;z-index:1000;}
+.menu i{font-size:24px;cursor:pointer;}
+.logo{font-size:26px;font-weight:bold;color:#0d47ff;}
+.logo span{color:#ff9800;}
+.top-icons{display:flex;gap:10px;align-items:center;}
+.top-icons button{border:none;cursor:pointer;}
+#themeBtn{width:42px;height:42px;border-radius:50%;background:#f1f1f1;font-size:18px;}
+.wallet{background:#0d47ff;color:#fff;padding:10px 16px;border-radius:30px;font-weight:bold;}
+.banner{margin:15px;border-radius:20px;overflow:hidden;position:relative;box-shadow:0 10px 25px rgba(0,0,0,.15);background:linear-gradient(135deg,#0d47ff,#00bcd4);}
+.bannerText{padding:30px 20px;color:#fff;}
+.bannerText h1{font-size:30px;font-weight:bold;}
+.bannerText p{margin-top:5px;font-size:15px;}
+.quick{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;padding:15px;}
+.box{background:#fff;border-radius:20px;padding:18px 10px;text-align:center;box-shadow:0 8px 20px rgba(0,0,0,.08);transition:.3s;cursor:pointer;}
+.box:hover{transform:translateY(-6px);}
+.box i{font-size:30px;margin-bottom:10px;color:#0d47ff;}
+.box p{font-weight:600;font-size:14px;}
+.games{padding:15px;}
+.games h2{font-size:28px;margin-bottom:20px;}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;}
+.card{background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 10px 20px rgba(0,0,0,.08);transition:.3s;cursor:pointer;}
+.card:hover{transform:scale(1.04);}
+.card img{width:100%;height:150px;object-fit:cover;background:#0d47ff;}
+.card h3{padding:12px;font-size:17px;text-align:center;}
+.popup{position:fixed;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,.45);display:none;justify-content:center;align-items:end;z-index:9999;}
+.popupBox{background:#fff;width:100%;border-radius:25px 25px 0 0;padding:25px;animation:up .35s;}
+@keyframes up{from{transform:translateY(100%);}to{transform:translateY(0);}}
+.popupBox h2{margin-bottom:20px;}
+.popupBox a{display:block;margin-bottom:15px;padding:16px;text-decoration:none;color:#fff;font-weight:bold;border-radius:15px;text-align:center;}
+.popupBox a:nth-child(2){background:#E1306C;}
+.popupBox a:nth-child(3){background:#ff0000;}
+.popupBox a:nth-child(4){background:#25D366;}
+.popupBox button{width:100%;padding:15px;border:none;background:#111;color:#fff;border-radius:15px;font-size:16px;margin-top:15px;}
+nav{position:fixed;bottom:0;left:0;width:100%;background:#fff;display:flex;justify-content:space-around;padding:12px 0;box-shadow:0 -5px 15px rgba(0,0,0,.1);}
+nav a{text-decoration:none;color:#666;display:flex;flex-direction:column;align-items:center;font-size:13px;}
+nav i{font-size:22px;margin-bottom:5px;}
+nav a:hover{color:#0d47ff;}
+.dark{background:#121212;color:#fff;}
+.dark header,.dark nav,.dark .box,.dark .card,.dark .popupBox{background:#1f1f1f;color:#fff;}
+.dark .games h2{color:#fff;}
+</style>
 </head>
-
 <body>
-
 <header>
-
-<div class="menu">
-<i class="fas fa-bars"></i>
-</div>
-
-<div class="logo">
-A1T <span>STORE</span>
-</div>
-
+<div class="menu"><i class="fas fa-bars"></i></div>
+<div class="logo">A1T <span>STORE</span></div>
 <div class="top-icons">
-
-<button id="themeBtn">
-<i class="fas fa-moon"></i>
-</button>
-
-<button class="wallet">
-₹0
-</button>
-
+<button id="themeBtn"><i class="fas fa-moon"></i></button>
+<button class="wallet">₹0</button>
 </div>
-
 </header>
 
-<!-- Banner -->
-
 <section class="banner">
-
-<img src="images/banner.jpg">
-
 <div class="bannerText">
-
 <h1>Top-Up Games Instantly</h1>
-
 <p>Fast • Secure • Instant Delivery</p>
-
 </div>
-
 </section>
-
-<!-- Quick Buttons -->
 
 <section class="quick">
-
-<div class="box">
-
-<i class="fas fa-wallet"></i>
-
-<p>Add Money</p>
-
-</div>
-
-<div class="box" id="followBtn">
-
-<i class="fas fa-share-alt"></i>
-
-<p>Follow Us</p>
-
-</div>
-
-<div class="box">
-
-<i class="fas fa-receipt"></i>
-
-<p>Orders</p>
-
-</div>
-
-<div class="box">
-
-<i class="fab fa-whatsapp"></i>
-
-<p>WhatsApp Order</p>
-
-</div>
-
+<div class="box"><i class="fas fa-wallet"></i><p>Add Money</p></div>
+<div class="box" id="followBtn"><i class="fas fa-share-alt"></i><p>Follow Us</p></div>
+<div class="box"><i class="fas fa-receipt"></i><p>Orders</p></div>
+<div class="box" onclick="window.open('https://wa.me/918638125856','_blank')"><i class="fab fa-whatsapp"></i><p>WhatsApp Order</p></div>
 </section>
-
-<!-- Popular Games -->
 
 <section class="games">
-
 <h2>Popular Games</h2>
-
 <div class="grid">
-
-<div class="card">
-<img src="images/mlbb.png">
+<div class="card" onclick="orderGame('Mobile Legends')">
+<img src="https://img.icons8.com/color/96/mobile-legends.png">
 <h3>Mobile Legends</h3>
 </div>
-
-<div class="card">
-<img src="images/freefire.png">
+<div class="card" onclick="orderGame('Free Fire')">
+<img src="https://img.icons8.com/color/96/free-fire.png">
 <h3>Free Fire</h3>
 </div>
-
-<div class="card">
-<img src="images/pubg.png">
-<h3>PUBG Mobile</h3>
+<div class="card" onclick="orderGame('BGMI')">
+<img src="https://img.icons8.com/color/96/crown.png">
+<h3>BGMI</h3>
 </div>
-
-<div class="card">
-<img src="images/hok.png">
+<div class="card" onclick="orderGame('Honor Of Kings')">
+<img src="https://img.icons8.com/color/96/game.png">
 <h3>Honor Of Kings</h3>
 </div>
-
-<div class="card">
-<img src="images/genshin.png">
-<h3>Genshin Impact</h3>
 </div>
-
-<div class="card">
-<img src="images/wuwa.png">
-<h3>Wuthering Waves</h3>
-</div>
-
-</div>
-
 </section>
 
-<!-- Follow Popup -->
-
 <div class="popup" id="popup">
-
 <div class="popupBox">
-
 <h2>Follow Us</h2>
-
-<a href="https://www.instagram.com/oreo_q787?igsh=MWV3ZTl1ZzVsZWN2eA==">
-Instagram
-</a>
-
-<a href="https://youtube.com/@mlkhabis?si=NnxoB_XZEksaweHu">
-YouTube
-</a>
-
-<a href="https://wa.me/918638125856">
-WhatsApp
-</a>
-
-<button id="closePopup">
-Close
-</button>
-
+<a href="https://www.instagram.com/oreo_q787?igsh=MWV3ZTl1ZzVsZWN2eA=="><i class="fab fa-instagram"></i> Instagram</a>
+<a href="https://youtube.com/@mlkhabis?si=NnxoB_XZEksaweHu"><i class="fab fa-youtube"></i> YouTube</a>
+<a href="https://wa.me/918638125856"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+<button id="closePopup">Close</button>
 </div>
-
 </div>
-
-<!-- Bottom Navigation -->
 
 <nav>
-
-<a href="#">
-<i class="fas fa-home"></i>
-Home
-</a>
-
-<a href="#">
-<i class="fas fa-gamepad"></i>
-Games
-</a>
-
-<a href="#">
-<i class="fas fa-shopping-cart"></i>
-Orders
-</a>
-
-<a href="#">
-<i class="fas fa-cog"></i>
-Settings
-</a>
-
+<a href="#"><i class="fas fa-home"></i>Home</a>
+<a href="#"><i class="fas fa-gamepad"></i>Games</a>
+<a href="#"><i class="fas fa-shopping-cart"></i>Orders</a>
+<a href="#"><i class="fas fa-cog"></i>Settings</a>
 </nav>
 
-<script src="script.js"></script>
-
-</body>
-</html>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
-}
-
-body{
-background:#f4f7fc;
-color:#222;
-padding-bottom:80px;
-}
-
-header{
-height:70px;
-background:#ffffff;
-display:flex;
-align-items:center;
-justify-content:space-between;
-padding:0 18px;
-box-shadow:0 2px 10px rgba(0,0,0,.08);
-position:sticky;
-top:0;
-z-index:1000;
-}
-
-.menu i{
-font-size:24px;
-cursor:pointer;
-}
-
-.logo{
-font-size:26px;
-font-weight:bold;
-color:#0d47ff;
-}
-
-.logo span{
-color:#ff9800;
-}
-
-.top-icons{
-display:flex;
-gap:10px;
-align-items:center;
-}
-
-.top-icons button{
-border:none;
-cursor:pointer;
-}
-
-#themeBtn{
-width:42px;
-height:42px;
-border-radius:50%;
-background:#f1f1f1;
-font-size:18px;
-}
-
-.wallet{
-background:#0d47ff;
-color:#fff;
-padding:10px 16px;
-border-radius:30px;
-font-weight:bold;
-}
-
-.banner{
-margin:15px;
-border-radius:20px;
-overflow:hidden;
-position:relative;
-box-shadow:0 10px 25px rgba(0,0,0,.15);
-}
-
-.banner img{
-width:100%;
-display:block;
-}
-
-.bannerText{
-position:absolute;
-left:20px;
-bottom:20px;
-color:#fff;
-}
-
-.bannerText h1{
-font-size:30px;
-font-weight:bold;
-}
-
-.bannerText p{
-margin-top:5px;
-font-size:15px;
-}
-
-.quick{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:15px;
-padding:15px;
-}
-
-.box{
-background:#fff;
-border-radius:20px;
-padding:18px 10px;
-text-align:center;
-box-shadow:0 8px 20px rgba(0,0,0,.08);
-transition:.3s;
-cursor:pointer;
-}
-
-.box:hover{
-transform:translateY(-6px);
-}
-
-.box i{
-font-size:30px;
-margin-bottom:10px;
-color:#0d47ff;
-}
-
-.box p{
-font-weight:600;
-font-size:14px;
-}
-
-.games{
-padding:15px;
-}
-
-.games h2{
-font-size:28px;
-margin-bottom:20px;
-}
-
-.grid{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:18px;
-}
-
-.card{
-background:#fff;
-border-radius:20px;
-overflow:hidden;
-box-shadow:0 10px 20px rgba(0,0,0,.08);
-transition:.3s;
-}
-
-.card:hover{
-transform:scale(1.04);
-}
-
-.card img{
-width:100%;
-height:150px;
-object-fit:cover;
-}
-
-.card h3{
-padding:12px;
-font-size:17px;
-text-align:center;
-}
-
-.popup{
-position:fixed;
-left:0;
-top:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,.45);
-display:none;
-justify-content:center;
-align-items:end;
-z-index:9999;
-}
-
-.popupBox{
-background:#fff;
-width:100%;
-border-radius:25px 25px 0 0;
-padding:25px;
-animation:up .35s;
-}
-
-@keyframes up{
-from{
-transform:translateY(100%);
-}
-to{
-transform:translateY(0);
-}
-}
-
-.popupBox h2{
-margin-bottom:20px;
-}
-
-.popupBox a{
-display:block;
-margin-bottom:15px;
-padding:16px;
-text-decoration:none;
-color:#fff;
-font-weight:bold;
-border-radius:15px;
-}
-
-.popupBox a:nth-child(2){
-background:#E1306C;
-}
-
-.popupBox a:nth-child(3){
-background:#ff0000;
-}
-
-.popupBox a:nth-child(4){
-background:#25D366;
-}
-
-.popupBox button{
-width:100%;
-padding:15px;
-border:none;
-background:#111;
-color:#fff;
-border-radius:15px;
-font-size:16px;
-margin-top:15px;
-}
-
-nav{
-position:fixed;
-bottom:0;
-left:0;
-width:100%;
-background:#fff;
-display:flex;
-justify-content:space-around;
-padding:12px 0;
-box-shadow:0 -5px 15px rgba(0,0,0,.1);
-}
-
-nav a{
-text-decoration:none;
-color:#666;
-display:flex;
-flex-direction:column;
-align-items:center;
-font-size:13px;
-}
-
-nav i{
-font-size:22px;
-margin-bottom:5px;
-}
-
-nav a:hover{
-color:#0d47ff;
-}
-
-.dark{
-background:#121212;
-color:#fff;
-}
-
-.dark header,
-.dark nav,
-.dark .box,
-.dark .card,
-.dark .popupBox{
-background:#1f1f1f;
-color:#fff;
-}
-
-.dark .games h2{
-color:#fff;
-}
-// ===== A1T STORE =====
-
+<script>
 // Follow Popup
 const followBtn = document.getElementById("followBtn");
 const popup = document.getElementById("popup");
 const closePopup = document.getElementById("closePopup");
 
-if (followBtn) {
-  followBtn.onclick = () => {
-    popup.style.display = "flex";
-  };
-}
-
-if (closePopup) {
-  closePopup.onclick = () => {
-    popup.style.display = "none";
-  };
-}
-
-window.onclick = function (e) {
-  if (e.target == popup) {
-    popup.style.display = "none";
-  }
-};
+followBtn.onclick = () => {popup.style.display = "flex";};
+closePopup.onclick = () => {popup.style.display = "none";};
+window.onclick = function (e) {if (e.target == popup) {popup.style.display = "none";}};
 
 // Dark Mode
 const themeBtn = document.getElementById("themeBtn");
-
-if (themeBtn) {
-  themeBtn.onclick = () => {
-    document.body.classList.toggle("dark");
-
-    if (document.body.classList.contains("dark")) {
-      themeBtn.innerHTML = '<i class="fas fa-sun"></i>';
-      localStorage.setItem("theme", "dark");
-    } else {
-      themeBtn.innerHTML = '<i class="fas fa-moon"></i>';
-      localStorage.setItem("theme", "light");
-    }
-  };
-}
-
-// Load Saved Theme
+themeBtn.onclick = () => {
+  document.body.classList.toggle("dark");
+  if (document.body.classList.contains("dark")) {
+    themeBtn.innerHTML = '<i class="fas fa-sun"></i>';
+    localStorage.setItem("theme", "dark");
+  } else {
+    themeBtn.innerHTML = '<i class="fas fa-moon"></i>';
+    localStorage.setItem("theme", "light");
+  }
+};
 if (localStorage.getItem("theme") === "dark") {
   document.body.classList.add("dark");
-
-  if (themeBtn) {
-    themeBtn.innerHTML = '<i class="fas fa-sun"></i>';
-  }
+  themeBtn.innerHTML = '<i class="fas fa-sun"></i>';
 }
 
-// WhatsApp Number
+// WhatsApp Order
 const whatsappNumber = "918638125856";
-
-// Example Function
-function sendOrder(game, item, price, userId, serverId) {
-
-  let message =
-`*NEW ORDER - A1T STORE*
-
-🎮 Game: ${game}
-
-💎 Item: ${item}
-
-💰 Price: ₹${price}
-
-👤 User ID: ${userId}
-
-🖥 Server ID: ${serverId}
-
-Please send me the payment QR Code.`;
-
-  let url =
-`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-
-  window.open(url, "_blank");
+function orderGame(game){
+  let item = prompt("Kaunsa pack chahiye? Example: 86 Diamonds");
+  let price = prompt("Price kya hai? Example: 170");
+  let userId = prompt("User ID daalo");
+  let serverId = prompt("Server ID daalo");
+  if(!item || !price || !userId) {alert("Sab bharna zaroori hai"); return;}
+  let message = `*NEW ORDER - A1T STORE*%0A%0A🎮 Game: ${game}%0A💎 Item: ${item}%0A💰 Price: ₹${price}%0A👤 User ID: ${userId}%0A🖥 Server ID: ${serverId}`;
+  window.open(`https://wa.me/${whatsappNumber}?text=${message}`, "_blank");
 }
-
-// Demo
 console.log("A1T STORE Loaded Successfully");
+</script>
+</body>
+</html>
