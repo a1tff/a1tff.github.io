@@ -3,155 +3,188 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>A1T STORE</title>
+<title>A1T STORE - Premium Game Topup</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif;}
-body{background:#f4f7fc;color:#222;padding-bottom:80px;}
-header{height:70px;background:#ffffff;display:flex;align-items:center;justify-content:space-between;padding:0 18px;box-shadow:0 2px 10px rgba(0,0,0,.08);position:sticky;top:0;z-index:1000;}
-.menu i{font-size:24px;cursor:pointer;}
-.logo{font-size:26px;font-weight:bold;color:#0d47ff;}
-.logo span{color:#ff9800;}
-.top-icons{display:flex;gap:10px;align-items:center;}
-.top-icons button{border:none;cursor:pointer;}
-#themeBtn{width:42px;height:42px;border-radius:50%;background:#f1f1f1;font-size:18px;}
-.wallet{background:#0d47ff;color:#fff;padding:10px 16px;border-radius:30px;font-weight:bold;}
-.banner{margin:15px;border-radius:20px;overflow:hidden;position:relative;box-shadow:0 10px 25px rgba(0,0,0,.15);background:linear-gradient(135deg,#0d47ff,#00bcd4);}
-.bannerText{padding:30px 20px;color:#fff;}
-.bannerText h1{font-size:30px;font-weight:bold;}
-.bannerText p{margin-top:5px;font-size:15px;}
-.quick{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;padding:15px;}
-.box{background:#fff;border-radius:20px;padding:18px 10px;text-align:center;box-shadow:0 8px 20px rgba(0,0,0,.08);transition:.3s;cursor:pointer;}
-.box:hover{transform:translateY(-6px);}
-.box i{font-size:30px;margin-bottom:10px;color:#0d47ff;}
-.box p{font-weight:600;font-size:14px;}
-.games{padding:15px;}
-.games h2{font-size:28px;margin-bottom:20px;}
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;}
-.card{background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 10px 20px rgba(0,0,0,.08);transition:.3s;cursor:pointer;}
-.card:hover{transform:scale(1.04);}
-.card img{width:100%;height:150px;object-fit:cover;background:#0d47ff;}
-.card h3{padding:12px;font-size:17px;text-align:center;}
-.popup{position:fixed;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,.45);display:none;justify-content:center;align-items:end;z-index:9999;}
-.popupBox{background:#fff;width:100%;border-radius:25px 25px 0 0;padding:25px;animation:up .35s;}
-@keyframes up{from{transform:translateY(100%);}to{transform:translateY(0);}}
-.popupBox h2{margin-bottom:20px;}
-.popupBox a{display:block;margin-bottom:15px;padding:16px;text-decoration:none;color:#fff;font-weight:bold;border-radius:15px;text-align:center;}
-.popupBox a:nth-child(2){background:#E1306C;}
-.popupBox a:nth-child(3){background:#ff0000;}
-.popupBox a:nth-child(4){background:#25D366;}
-.popupBox button{width:100%;padding:15px;border:none;background:#111;color:#fff;border-radius:15px;font-size:16px;margin-top:15px;}
-nav{position:fixed;bottom:0;left:0;width:100%;background:#fff;display:flex;justify-content:space-around;padding:12px 0;box-shadow:0 -5px 15px rgba(0,0,0,.1);}
-nav a{text-decoration:none;color:#666;display:flex;flex-direction:column;align-items:center;font-size:13px;}
-nav i{font-size:22px;margin-bottom:5px;}
-nav a:hover{color:#0d47ff;}
-.dark{background:#121212;color:#fff;}
-.dark header,.dark nav,.dark .box,.dark .card,.dark .popupBox{background:#1f1f1f;color:#fff;}
-.dark .games h2{color:#fff;}
+:root{
+  --bg:#0A0E1A; --card:#121827; --glass:rgba(18,24,39,0.55);
+  --neon:#00D4FF; --text:#E0E6F1; --gradient:linear-gradient(135deg,#00D4FF,#0077FF);
+}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body{background:var(--bg);color:var(--text);transition:0.3s;overflow-x:hidden;}
+body.light{--bg:#F0F4F8;--card:#FFFFFF;--glass:rgba(255,255,255,0.75);--text:#1A1A1A;}
+
+.glass{background:var(--glass);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.12);border-radius:20px;box-shadow:0 8px 32px rgba(0,212,255,0.12);}
+.btn{background:var(--gradient);color:#fff;border:none;padding:14px 24px;border-radius:15px;font-weight:600;cursor:pointer;transition:0.3s;box-shadow:0 0 20px rgba(0,212,255,0.3);}
+.btn:hover{transform:translateY(-3px);box-shadow:0 0 30px rgba(0,212,255,0.6);}
+
+.loader{position:fixed;top:0;left:0;width:100%;height:100%;background:var(--bg);display:flex;justify-content:center;align-items:center;z-index:9999;}
+.loader-circle{width:60px;height:60px;border:3px solid var(--neon);border-top:3px solid transparent;border-radius:50%;animation:spin 1s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
+
+header{display:flex;justify-content:space-between;align-items:center;padding:15px;position:sticky;top:0;z-index:100;margin:10px;}
+.logo{font-size:22px;font-weight:700;}.logo span{color:var(--neon);}
+.header-icons{display:flex;gap:12px;}
+.header-icons i{font-size:20px;padding:10px;background:var(--glass);border-radius:50%;cursor:pointer;}
+
+.slider{margin:15px;border-radius:20px;overflow:hidden;position:relative;height:180px;}
+.slide{position:absolute;width:100%;height:100%;background:var(--gradient);display:flex;flex-direction:column;justify-content:center;padding:25px;opacity:0;transition:1s;}
+.slide.active{opacity:1;}.slide h1{font-size:28px;}
+
+.quick{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding:15px;}
+.qbox{text-align:center;padding:18px 8px;cursor:pointer;transition:0.3s;}
+.qbox:hover{transform:translateY(-5px);border-color:var(--neon);}
+.qbox i{font-size:26px;color:var(--neon);margin-bottom:8px;}
+
+.games{padding:15px;}.games h2{margin-bottom:15px;}
+.game-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:15px;}
+.game-card{padding:20px;text-align:center;cursor:pointer;transition:0.3s;}
+.game-card:hover{transform:scale(1.05);border-color:var(--neon);box-shadow:0 0 25px rgba(0,212,255,0.3);}
+.game-card img{width:70px;height:70px;object-fit:contain;margin-bottom:10px;border-radius:15px;}
+
+.page{display:none;padding:15px;animation:fadeIn 0.4s;}
+.page.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+
+.input{width:100%;padding:14px;background:var(--glass);border:1px solid rgba(255,255,255,0.1);border-radius:15px;color:var(--text);margin-bottom:12px;font-size:15px;}
+.pack{display:flex;justify-content:space-between;align-items:center;padding:15px;margin-bottom:10px;cursor:pointer;}
+.pack.selected{border:2px solid var(--neon);background:rgba(0,212,255,0.1);}
+
+.checkout-summary p{display:flex;justify-content:space-between;margin:10px 0;}
+.qr-box{width:200px;height:200px;background:var(--glass);margin:20px auto;border-radius:20px;display:flex;justify-content:center;align-items:center;}
+
+nav{position:fixed;bottom:0;left:0;width:100%;display:flex;justify-content:space-around;padding:12px;z-index:100;margin-bottom:5px;}
+nav a{color:var(--text);text-decoration:none;text-align:center;font-size:12px;}
+nav i{font-size:22px;display:block;margin-bottom:4px;}
+
+.popup{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);display:none;justify-content:center;align-items:end;z-index:200;}
+.popup-box{width:100%;padding:25px;animation:slideUp 0.3s;}
+@keyframes slideUp{from{transform:translateY(100%);}to{transform:translateY(0);}}
+.popup-box a{display:block;padding:16px;margin-bottom:12px;border-radius:15px;text-decoration:none;color:#fff;font-weight:600;}
 </style>
 </head>
 <body>
-<header>
-<div class="menu"><i class="fas fa-bars"></i></div>
+<div class="loader" id="loader"><div class="loader-circle"></div></div>
+
+<header class="glass">
+<i class="fas fa-bars"></i>
 <div class="logo">A1T <span>STORE</span></div>
-<div class="top-icons">
-<button id="themeBtn"><i class="fas fa-moon"></i></button>
-<button class="wallet">₹0</button>
+<div class="header-icons">
+<i class="fas fa-search" onclick="alert('Search Coming Soon')"></i>
+<i class="fas fa-moon" id="themeBtn"></i>
 </div>
 </header>
 
-<section class="banner">
-<div class="bannerText">
-<h1>Top-Up Games Instantly</h1>
-<p>Fast • Secure • Instant Delivery</p>
+<div id="home" class="page active">
+<div class="slider">
+<div class="slide active"><h1>Fast Game Top-Up</h1><p>Instant Delivery • 24/7 Service</p></div>
+<div class="slide"><h1>Trusted Service</h1><p>100% Safe & Secure Payments</p></div>
+<div class="slide"><h1>Best Prices</h1><p>Cheapest Diamond & UC Rates</p></div>
 </div>
-</section>
 
-<section class="quick">
-<div class="box"><i class="fas fa-wallet"></i><p>Add Money</p></div>
-<div class="box" id="followBtn"><i class="fas fa-share-alt"></i><p>Follow Us</p></div>
-<div class="box"><i class="fas fa-receipt"></i><p>Orders</p></div>
-<div class="box" onclick="window.open('https://wa.me/918638125856','_blank')"><i class="fab fa-whatsapp"></i><p>WhatsApp Order</p></div>
-</section>
+<div class="quick">
+<div class="qbox glass"><i class="fas fa-bolt"></i><p>Order Now</p></div>
+<div class="qbox glass" id="followBtn"><i class="fas fa-share"></i><p>Follow Us</p></div>
+<div class="qbox glass" onclick="window.open('https://wa.me/918638125856')"><i class="fas fa-phone"></i><p>Contact</p></div>
+<div class="qbox glass" onclick="alert('WhatsApp us for 24/7 Support')"><i class="fas fa-headset"></i><p>Support</p></div>
+</div>
 
-<section class="games">
+<div class="games">
 <h2>Popular Games</h2>
-<div class="grid">
-<div class="card" onclick="orderGame('Mobile Legends')">
-<img src="https://img.icons8.com/color/96/mobile-legends.png">
-<h3>Mobile Legends</h3>
-</div>
-<div class="card" onclick="orderGame('Free Fire')">
-<img src="https://img.icons8.com/color/96/free-fire.png">
-<h3>Free Fire</h3>
-</div>
-<div class="card" onclick="orderGame('BGMI')">
-<img src="https://img.icons8.com/color/96/crown.png">
-<h3>BGMI</h3>
-</div>
-<div class="card" onclick="orderGame('Honor Of Kings')">
-<img src="https://img.icons8.com/color/96/game.png">
-<h3>Honor Of Kings</h3>
+<div class="game-grid">
+<!-- OFFICIAL CDN LOGOS -->
+<div class="game-card glass" onclick="openGame('ff')"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google-original.svg" style="background:#FF4500;padding:8px;"><h3>Free Fire</h3></div>
+<div class="game-card glass" onclick="openGame('mlbb')"><img src="https://cdn.brandfetch.io/idV4cZ5gXa/w/400/h/400/icon.jpeg" alt="MLBB"><h3>Mobile Legends</h3></div>
+<div class="game-card glass" onclick="openGame('pubg')"><img src="https://cdn.brandfetch.io/idO8fZqK2a/w/400/h/400/icon.jpeg" alt="PUBG"><h3>PUBG Mobile</h3></div>
+<div class="game-card glass" onclick="openGame('bgmi')"><img src="https://cdn.brandfetch.io/idO8fZqK2a/w/400/h/400/icon.jpeg" alt="BGMI" style="background:#FDB913;padding:8px;"><h3>BGMI</h3></div>
+<div class="game-card glass" onclick="openGame('hok')"><img src="https://cdn.brandfetch.io/idV8kL9mNp/w/400/h/400/icon.jpeg" alt="HOK"><h3>Honor Of Kings</h3></div>
+<div class="game-card glass" onclick="openGame('codm')"><img src="https://cdn.brandfetch.io/idW2pQrStUv/w/400/h/400/icon.jpeg" alt="CODM"><h3>COD Mobile</h3></div>
 </div>
 </div>
-</section>
+</div>
+
+<div id="gamePage" class="page"></div>
+<div id="checkoutPage" class="page"></div>
+<div id="paymentPage" class="page"></div>
 
 <div class="popup" id="popup">
-<div class="popupBox">
-<h2>Follow Us</h2>
-<a href="https://www.instagram.com/oreo_q787?igsh=MWV3ZTl1ZzVsZWN2eA=="><i class="fab fa-instagram"></i> Instagram</a>
-<a href="https://youtube.com/@mlkhabis?si=NnxoB_XZEksaweHu"><i class="fab fa-youtube"></i> YouTube</a>
-<a href="https://wa.me/918638125856"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-<button id="closePopup">Close</button>
+<div class="popup-box glass">
+<h2 style="margin-bottom:20px">Follow Us</h2>
+<a href="https://www.instagram.com/oreo_q787?igsh=MWV3ZTl1ZzVsZWN2eA==" style="background:#E1306C"><i class="fab fa-instagram"></i> Instagram</a>
+<a href="https://youtube.com/@mlkhabis?si=NnxoB_XZEksaweHu" style="background:#FF0000"><i class="fab fa-youtube"></i> YouTube</a>
+<a href="https://wa.me/918638125856" style="background:#25D366"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+<button class="btn" style="width:100%;margin-top:10px" onclick="closePopup()">Close</button>
 </div>
 </div>
 
-<nav>
-<a href="#"><i class="fas fa-home"></i>Home</a>
-<a href="#"><i class="fas fa-gamepad"></i>Games</a>
-<a href="#"><i class="fas fa-shopping-cart"></i>Orders</a>
-<a href="#"><i class="fas fa-cog"></i>Settings</a>
+<nav class="glass">
+<a href="#" onclick="showPage('home')"><i class="fas fa-home"></i>Home</a>
+<a href="#" onclick="showPage('home')"><i class="fas fa-gamepad"></i>Games</a>
+<a href="#" onclick="alert('Coming Soon')"><i class="fas fa-shopping-cart"></i>Orders</a>
+<a href="#" onclick="alert('Coming Soon')"><i class="fas fa-user"></i>Profile</a>
 </nav>
 
 <script>
-// Follow Popup
-const followBtn = document.getElementById("followBtn");
-const popup = document.getElementById("popup");
-const closePopup = document.getElementById("closePopup");
+window.onload = () => setTimeout(()=>document.getElementById('loader').style.display='none',1000);
 
-followBtn.onclick = () => {popup.style.display = "flex";};
-closePopup.onclick = () => {popup.style.display = "none";};
-window.onclick = function (e) {if (e.target == popup) {popup.style.display = "none";}};
+let currentGame = {}; let selectedPack = {};
+const WA = "918638125856";
 
-// Dark Mode
-const themeBtn = document.getElementById("themeBtn");
-themeBtn.onclick = () => {
-  document.body.classList.toggle("dark");
-  if (document.body.classList.contains("dark")) {
-    themeBtn.innerHTML = '<i class="fas fa-sun"></i>';
-    localStorage.setItem("theme", "dark");
-  } else {
-    themeBtn.innerHTML = '<i class="fas fa-moon"></i>';
-    localStorage.setItem("theme", "light");
-  }
+const gameData = {
+ff:{name:"Free Fire",fields:["Player UID"],packs:["80 Diamonds ₹80","210 Diamonds ₹200","530 Diamonds ₹500","1080 Diamonds ₹1000","Weekly Membership ₹160","Level Up Pass ₹180"]},
+mlbb:{name:"Mobile Legends",fields:["User ID","Server ID"],packs:["86 Diamonds ₹170","172 Diamonds ₹340","257 Diamonds ₹510","Weekly Pass ₹149","Twilight Pass ₹750","Starlight Card ₹599"]},
+pubg:{name:"PUBG Mobile",fields:["Character ID"],packs:["60 UC ₹80","325 UC ₹400","660 UC ₹800","1800 UC ₹2000","3850 UC ₹4000"]},
+bgmi:{name:"BGMI",fields:["Character ID"],packs:["60 UC ₹80","325 UC ₹400","660 UC ₹800","1800 UC ₹2000","Prime Plus ₹350"]},
+hok:{name:"Honor Of Kings",fields:["Player ID"],packs:["80 Tokens ₹90","220 Tokens ₹220","510 Tokens ₹500","1210 Tokens ₹1100"]},
+codm:{name:"COD Mobile",fields:["Player UID"],packs:["80 CP ₹80","240 CP ₹200","500 CP ₹400","1050 CP ₹800"]}
 };
-if (localStorage.getItem("theme") === "dark") {
-  document.body.classList.add("dark");
-  themeBtn.innerHTML = '<i class="fas fa-sun"></i>';
+
+function showPage(id){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');}
+function openGame(key){
+  currentGame = gameData[key];
+  let html = `<button onclick="showPage('home')" style="background:none;border:none;color:var(--neon);margin-bottom:15px"><i class="fas fa-arrow-left"></i> Back</button><h2>${currentGame.name}</h2>`;
+  currentGame.fields.forEach(f=>html+=`<input class="input glass" id="${f}" placeholder="Enter ${f}">`);
+  html+=`<h3 style="margin:15px 0">Select Package</h3>`;
+  currentGame.packs.forEach((p,i)=>{
+    let parts=p.split(' ₹'); let name=parts[0]; let price=parts[1];
+    html+=`<div class="pack glass" onclick="selectPack(this,'${name}','${price}')"><b>${name}</b><span style="color:var(--neon);font-weight:700">₹${price}</span></div>`;
+  });
+  html+=`<button class="btn" style="width:100%;margin-top:15px" onclick="goCheckout()">Checkout</button>`;
+  document.getElementById('gamePage').innerHTML=html; showPage('gamePage');
+}
+function selectPack(el,name,price){document.querySelectorAll('.pack').forEach(p=>p.classList.remove('selected'));el.classList.add('selected');selectedPack={name,price};}
+function goCheckout(){
+  let vals = currentGame.fields.map(f=>document.getElementById(f).value);
+  if(vals.includes('') ||!selectedPack.name){alert('Sab bharo aur pack select karo');return;}
+  let html=`<button onclick="openGame(Object.keys(gameData).find(k=>gameData[k]==currentGame))" style="background:none;border:none;color:var(--neon);margin-bottom:15px"><i class="fas fa-arrow-left"></i> Back</button><h2>Checkout</h2><div class="checkout-summary glass" style="padding:20px">
+  <p>Game <span>${currentGame.name}</span></p><p>Item <span>${selectedPack.name}</span></p><p>Price <span>₹${selectedPack.price}</span></p>`;
+  currentGame.fields.forEach((f,i)=>html+=`<p>${f} <span>${vals[i]}</span></p>`);
+  html+=`</div><button class="btn" style="width:100%" onclick="sendWhatsApp('${vals.join(" | ")}')">Checkout & Order on WhatsApp</button>`;
+  document.getElementById('checkoutPage').innerHTML=html; showPage('checkoutPage');
+}
+function sendWhatsApp(ids){
+  let msg=`*NEW ORDER - A1T STORE*%0A%0AGame: ${currentGame.name}%0AItem: ${selectedPack.name}%0APrice: ₹${selectedPack.price}%0A${currentGame.fields.map((f,i)=>f+': '+ids.split(' | ')[i]).join('%0A')}%0A%0APlease send payment QR code.`;
+  window.open(`https://wa.me/${WA}?text=${msg}`,'_blank'); showPayment();
+}
+function showPayment(){
+  document.getElementById('paymentPage').innerHTML=`<button onclick="showPage('checkoutPage')" style="background:none;border:none;color:var(--neon);margin-bottom:15px"><i class="fas fa-arrow-left"></i> Back</button><h2>Payment</h2>
+  <div class="qr-box glass"><i class="fas fa-qrcode" style="font-size:80px;color:var(--neon)"></i></div>
+  <p style="text-align:center;margin-bottom:15px">UPI ID: <b>a1tstore@upi</b></p>
+  <input type="file" class="input glass" accept="image/*">
+  <button class="btn" style="width:100%" onclick="alert('Payment Screenshot Submitted! We will confirm soon.')">Submit Payment</button>`;
+  showPage('paymentPage');
 }
 
-// WhatsApp Order
-const whatsappNumber = "918638125856";
-function orderGame(game){
-  let item = prompt("Kaunsa pack chahiye? Example: 86 Diamonds");
-  let price = prompt("Price kya hai? Example: 170");
-  let userId = prompt("User ID daalo");
-  let serverId = prompt("Server ID daalo");
-  if(!item || !price || !userId) {alert("Sab bharna zaroori hai"); return;}
-  let message = `*NEW ORDER - A1T STORE*%0A%0A🎮 Game: ${game}%0A💎 Item: ${item}%0A💰 Price: ₹${price}%0A👤 User ID: ${userId}%0A🖥 Server ID: ${serverId}`;
-  window.open(`https://wa.me/${whatsappNumber}?text=${message}`, "_blank");
+document.getElementById('followBtn').onclick=()=>document.getElementById('popup').style.display='flex';
+function closePopup(){document.getElementById('popup').style.display='none';}
+
+document.getElementById('themeBtn').onclick=()=>{
+  document.body.classList.toggle('light');
+  document.getElementById('themeBtn').className = document.body.classList.contains('light')?'fas fa-sun':'fas fa-moon';
 }
-console.log("A1T STORE Loaded Successfully");
+
+let slide=0;setInterval(()=>{document.querySelectorAll('.slide').forEach(s=>s.classList.remove('active'));slide=(slide+1)%3;document.querySelectorAll('.slide')[slide].classList.add('active');},3000);
 </script>
 </body>
 </html>
