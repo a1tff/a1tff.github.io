@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A1T STORE - FAST SAFE INSTANT TOP-UP</title>
+<meta name="description" content="A1T STORE - Premium Game Top-Up for Free Fire, MLBB, PUBG, BGMI. Instant Delivery 24/7">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="assets/icons/favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- LOADING SCREEN -->
+<div id="loader"><div class="logo">A1T <span>STORE</span></div><div class="bar"></div></div>
+
+<!-- HEADER -->
+<header id="header" class="glass">
+  <i class="fas fa-bars" onclick="openMenu()"></i>
+  <div class="logo">A1T <span>STORE</span></div>
+  <div class="icons">
+    <i class="fas fa-search" onclick="openSearch()"></i>
+    <i class="fas fa-bell"></i>
+    <i class="fas fa-moon" id="themeBtn" onclick="toggleTheme()"></i>
+    <i class="fas fa-user"></i>
+  </div>
+</header>
+
+<!-- MAIN -->
+<main id="app">
+  <!-- HOME PAGE -->
+  <section id="homePage" class="page active">
+    <!-- SLIDER -->
+    <div class="slider"><div class="slides" id="slides"></div></div>
+    
+    <!-- QUICK ACTIONS -->
+    <div class="quick">
+      <div class="qbox glass" onclick="toast('Top Up')"><i class="fas fa-bolt"></i><p>Top Up</p></div>
+      <div class="qbox glass" onclick="showPage('orders')"><i class="fas fa-receipt"></i><p>Orders</p></div>
+      <div class="qbox glass" onclick="openSupport()"><i class="fas fa-headset"></i><p>Support</p></div>
+      <div class="qbox glass" onclick="openSheet()"><i class="fas fa-share"></i><p>Follow</p></div>
+    </div>
+
+    <!-- POPULAR GAMES -->
+    <div class="section">
+      <h2>Popular Games</h2>
+      <div class="grid" id="gameGrid"></div>
+    </div>
+
+    <!-- WHY CHOOSE -->
+    <div class="section">
+      <h2>Why Choose A1T STORE</h2>
+      <div class="grid3">
+        <div class="glass card"><i class="fas fa-bolt"></i><p>Instant Delivery</p></div>
+        <div class="glass card"><i class="fas fa-shield"></i><p>100% Safe</p></div>
+        <div class="glass card"><i class="fas fa-headset"></i><p>24/7 Support</p></div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="glass">
+      <p>© 2026 A1T STORE. All Rights Reserved</p>
+    </footer>
+  </section>
+
+  <!-- GAME PAGE -->
+  <section id="gamePage" class="page"></section>
+  <section id="orders" class="page"><h2>My Orders</h2><p>Coming Soon</p></section>
+</main>
+
+<!-- BOTTOM NAV -->
+<nav class="glass bottomNav">
+  <div onclick="showPage('homePage')" class="active"><i class="fas fa-home"></i><span>Home</span></div>
+  <div onclick="toast('Games')"><i class="fas fa-gamepad"></i><span>Games</span></div>
+  <div onclick="showPage('orders')"><i class="fas fa-cart-shopping"></i><span>Orders</span></div>
+  <div onclick="openSupport()"><i class="fas fa-headset"></i><span>Support</span></div>
+  <div onclick="toast('Profile')"><i class="fas fa-user"></i><span>Profile</span></div>
+</nav>
+
+<!-- BOTTOM SHEET -->
+<div id="sheet" class="sheet"><div class="sheet-content glass">
+  <h3>Follow Us</h3>
+  <a href="https://www.instagram.com/oreo_q787" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+  <a href="https://youtube.com/@mlkhabis" target="_blank"><i class="fab fa-youtube"></i> YouTube</a>
+  <a href="https://wa.me/918638125856" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+  <button onclick="closeSheet()">Close</button>
+</div></div>
+
+<!-- TOAST -->
+<div id="toast"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
